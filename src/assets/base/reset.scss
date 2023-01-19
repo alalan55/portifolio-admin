@@ -1,27 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "../utils/index";
 
-// :root {
-//     --color-background: $pa-white;
-//     --color-background-soft: $pa-white-soft;
-//     --color-background-mute: $pa-white-mute;
-//     --color-border: $pa-divider-light-2;
-//     --color-border-hover: $pa-divider-light-1;
-//     --color-heading: $pa-text-light-1;
-//     --color-text: $pa-text-light-1;
-// }
+:root {
+    --color-background: $pa-white;
+    --color-background-soft: $pa-white-soft;
+    --color-background-mute: $pa-white-mute;
+    --color-border: $pa-divider-light-2;
+    --color-border-hover: $pa-divider-light-1;
+    --color-heading: $pa-text-light-1;
+    --color-text: $pa-text-light-1;
+    // color-scheme: light dark;
+}
 
-// @media (prefers-color-scheme: dark) {
-//     :root {
-//         --color-background: $pa-black;
-//         --color-background-soft: $pa-black-soft;
-//         --color-background-mute: $pa-black-mute;
-//         --color-border: $pa-divider-dark-2;
-//         --color-border-hover: $pa-divider-dark-1;
-//         --color-heading: $pa-text-dark-1;
-//         --color-text: $pa-text-dark-2;
-//     }
-// }
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-background: $pa-black;
+        --color-background-soft: $pa-black-soft;
+        --color-background-mute: $pa-black-mute;
+        --color-border: $pa-divider-dark-2;
+        --color-border-hover: $pa-divider-dark-1;
+        --color-heading: $pa-text-dark-1;
+        --color-text: $pa-text-dark-2;
+    }
+}
 *,
 *::before,
 *::after {
@@ -31,7 +32,13 @@
     font-family: "Montserrat", sans-serif;
 }
 
-// body {
-//     color: var(--color-text);
-//     background: var(--color-background);
-// }
+body {
+    color: var(--color-text);
+    background: var(--color-background);
+    border: 5px solid var(--color-background);
+}
+body.dark {
+    border: 5px solid red;
+    background: $pa-black-mute;
+    color: $pa-text-dark-2;
+}
