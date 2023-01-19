@@ -1,4 +1,10 @@
 <script setup>
+import { ref } from "vue";
+import Input from "@/components/common/TInput.vue";
+import Button from "@/components/common/TButton.vue";
+
+const userLogin = ref({});
+const x = ref("");
 // import { useDark, useToggle } from "@vueuse/core";
 // const isDark = useDark({
 //   selector: "body",
@@ -19,7 +25,21 @@
       <div class="auth__card__descriptions">
         <span> Insira as informações abaixo pra logar no sistema :) </span>
       </div>
-      <div class="auth__card__form"></div>
+      <div class="auth__card__form">
+        <form>
+          <div class="item">
+            <span>E-mail</span>
+            <Input size="large" v-model="x" />
+          </div>
+          <div class="item">
+            <span>Senha</span>
+            <Input size="large" type="password" />
+          </div>
+          <div class="action">
+            <Button text="Login" />
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -34,6 +54,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: $pa-s-1;
 
   &__card {
     border: 1px solid;
@@ -41,6 +62,8 @@
     background: $pa-white;
     border-radius: 10px;
     color: $pa-black-soft;
+    max-width: 500px;
+    width: 100%;
     &__logo {
       margin-bottom: $pa-s-1;
       h2 {
@@ -56,6 +79,16 @@
     &__logo,
     &__descriptions {
       text-align: center;
+    }
+
+    &__form {
+      margin: $pa-s-2 0 0;
+      form {
+        .item {
+          @include inputItem;
+          margin-bottom: $pa-s-1;
+        }
+      }
     }
   }
 }
