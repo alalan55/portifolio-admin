@@ -1,10 +1,21 @@
 <script setup>
 import { ref } from "vue";
-import Input from "@/components/common/TInput.vue";
+import { useRouter } from "vue-router";
+import { useAuthStore } from "@/stores/auth";
 import Button from "@/components/common/TButton.vue";
 
 const userLogin = ref({});
-const x = ref("");
+const loading = ref(false);
+const store = useAuthStore();
+const router = useRouter();
+
+const login = async () => {
+  loading.value = true;
+  const isOk = await store.login(userLogin.value);
+  if (isOk) router.push({ name: "home" });
+  loading.value = false;
+};
+
 // import { useDark, useToggle } from "@vueuse/core";
 // const isDark = useDark({
 //   selector: "body",
@@ -29,14 +40,26 @@ const x = ref("");
         <form>
           <div class="item">
             <span>E-mail</span>
-            <Input size="large" v-model="x" />
+
+            <n-input
+              v-model:value="userLogin.email"
+              size="large"
+              placeholder="E-mail"
+              round
+            />
           </div>
           <div class="item">
             <span>Senha</span>
-            <Input size="large" type="password" />
+            <n-input
+              v-model:value="userLogin.password"
+              size="large"
+              placeholder="Senha"
+              type="password"
+              round
+            />
           </div>
           <div class="action">
-            <Button text="Login" />
+            <Button text="Login" :loading="loading" size="large" @click="login" />
           </div>
         </form>
       </div>
@@ -87,6 +110,9 @@ const x = ref("");
         .item {
           @include inputItem;
           margin-bottom: $pa-s-1;
+        }
+        .action {
+          margin-top: $pa-s-2;
         }
       }
     }
