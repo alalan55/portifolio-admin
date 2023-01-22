@@ -18,7 +18,7 @@
 .wrapper {
   height: 100%;
   width: 100%;
-  color: $pa-text-light-1;
+  color: $pa-black-mute;
   display: flex;
   align-items: center;
   justify-content: space-between;

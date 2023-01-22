@@ -2,16 +2,19 @@
 import { ref } from "vue";
 import TopNav from "@/components/layout/topNav.vue";
 import SideNav from "@/components/layout/sideNav.vue";
-const isActive = ref(false);
+const isActive = ref(true);
+
+const setActive = (payload) => {
+  isActive.value = !isActive.value;
+  console.log("chamado", isActive.value);
+};
 </script>
 
 <template>
   <div class="layout">
     <div class="layout__content" :class="{ active: isActive }">
       <div class="layout__content__side-nav">
-        <!-- <h1>side nav</h1>
-        <button @click="isActive = !isActive">teswte</button> -->
-        <SideNav />
+        <SideNav @setOpen="setActive()" />
       </div>
 
       <div class="layout__content__top-nav">
@@ -31,8 +34,7 @@ const isActive = ref(false);
   &__content {
     min-height: 100vh;
     & > div {
-    
-      //   border: 1px solid;
+      border: 1px solid;
     }
 
     transition: 0.5s ease-in-out;
@@ -49,7 +51,6 @@ const isActive = ref(false);
 
     &__side-nav {
       grid-area: side-nav;
-     
     }
     &__top-nav {
       grid-area: top-nav;
@@ -68,7 +69,7 @@ const isActive = ref(false);
       "side-nav content content content content content content content";
 
     .layout__content__side-nav {
-      max-width: 25 0px;
+      max-width: 200px;
     }
   }
 }

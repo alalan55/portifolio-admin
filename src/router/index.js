@@ -29,13 +29,13 @@ const router = createRouter({
   ],
 });
 
-router.beforeEach((to, from, next) => {
-  const store = useAuthStore();
+// router.beforeEach((to, from, next) => {
+//   const store = useAuthStore();
 
-  if (to.meta.requiresAuth && !store.$token) next({ name: "auth" });
-  else if (to.name == "auth" && store.$token) next({ name: "home" });
-  else next();
+//   if (to.meta.requiresAuth && !store.$token) next({ name: "auth" });
+//   else if (to.name == "auth" && store.$token) next({ name: "home" });
+//   else next();
   
-});
+// });
 
 export default router;

@@ -40,26 +40,29 @@ const login = async () => {
         <form>
           <div class="item">
             <span>E-mail</span>
-
-            <n-input
-              v-model:value="userLogin.email"
-              size="large"
+            <v-text-field
+              v-model="userLogin.email"
+              variant="outlined"
               placeholder="E-mail"
-              round
-            />
+            ></v-text-field>
           </div>
           <div class="item">
             <span>Senha</span>
-            <n-input
-              v-model:value="userLogin.password"
-              size="large"
+            <v-text-field
+              v-model="userLogin.password"
               placeholder="Senha"
+              variant="outlined"
               type="password"
-              round
-            />
+            ></v-text-field>
           </div>
           <div class="action">
-            <Button text="Login" :loading="loading" size="large" @click="login" />
+            <Button
+              text="Login"
+              :rounded="true"
+              :loading="loading"
+              size="large"
+              @click="login"
+            />
           </div>
         </form>
       </div>
